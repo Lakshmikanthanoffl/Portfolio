@@ -1,204 +1,272 @@
-<div class="h-screen bg-[#1d232a] overflow-y-scroll green-scrollbar">
-<!-- Hero Section - Full screen, vertically + horizontally centered -->
-<section class="h-screen flex items-center justify-center px-12 bg-gray-900 text-white">
-    <div class="flex flex-col md:flex-row items-center max-w-6xl w-full space-x-0 md:space-x-16">
-      <!-- Text Container -->
-    <!-- Text Container -->
-<div class="flex flex-col justify-center flex-1 w-full md:text-left">
+<div class="portfolio-root">
 
-    <h1 class="text-5xl md:text-7xl font-extrabold text-green-400 pr-4 whitespace-nowrap mb-2 typewriter">
+  <!-- ===== NAVBAR ===== -->
+  <nav [class.nav-scrolled]="scrolled" class="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo" (click)="scrollTo('home')">LB<span class="dot">.</span></span>
+      <ul class="nav-links">
+        <li *ngFor="let link of navLinks">
+          <button (click)="scrollTo(link.id)" [class.active]="activeSection === link.id" class="nav-btn">
+            {{ link.label }}
+          </button>
+        </li>
+      </ul>
+      <button class="hamburger" (click)="toggleMenu()" aria-label="Toggle menu">
+        <span [class.open]="isMenuOpen"></span>
+        <span [class.open]="isMenuOpen"></span>
+        <span [class.open]="isMenuOpen"></span>
+      </button>
+    </div>
+    <div class="mobile-menu" [class.show]="isMenuOpen">
+      <button *ngFor="let link of navLinks" (click)="scrollTo(link.id)" class="mobile-link">{{ link.label }}</button>
+    </div>
+  </nav>
 
-      Lakshmikanthan B
-    </h1>
-    <!-- Right-align the subtext -->
-    <p class="text-lg font-semibold text-gray-300 mt-0 self-end text-right fade-in-delayed">
-      Full Stack Developer
-    </p>
-    <a
-  href="/assets/files/Lakshmikanthan_Resume_Updated_Final.pdf"
-  download
-  class="mt-3 self-end text-right inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg shadow transition duration-300"
->
-  Download Resume
-</a>
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero-section">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-greeting">👋 Hello, I'm</p>
+        <h1 class="hero-name typewriter">Lakshmikanthan B</h1>
+        <p class="hero-role fade-in-delayed">Junior Software Engineer</p>
+        <p class="hero-tagline fade-in-delayed2">
+          2+ years building full-stack apps with <span class="tag-inline">Angular</span>
+          <span class="tag-inline">.NET Web API</span> <span class="tag-inline">PostgreSQL</span> &amp; <span class="tag-inline">Neo4j</span>
+        </p>
+        <div class="hero-actions fade-in-delayed2">
+          <button (click)="scrollTo('projects')" class="btn-primary">View My Work</button>
+          <a href="/assets/files/Lakshmikanthan_Resume_Updated_Final.pdf" download class="btn-outline">⬇ Download Resume</a>
+        </div>
+        <div class="hero-socials fade-in-delayed2">
+          <a href="https://github.com/Lakshmikanthanoffl" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/lakshmikanthan-b-b3820023a/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="mailto:lakshmikanthan.b.2001@gmail.com" aria-label="Email" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.9.732-1.636 1.636-1.636h.749L12 11.73l9.615-7.909h.749A1.636 1.636 0 0 1 24 5.457z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-img-ring">
+          <div class="hero-img-wrapper">
+            <img src="../../assets/img/hero-1 (1).png" alt="Lakshmikanthan B - Full Stack Developer" class="float-animation" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator"><div class="scroll-dot"></div></div>
+  </section>
 
-  </div>
-  
-  
-      <!-- Image Container -->
-      <div class="flex-shrink-0 w-full md:w-1/2 flex items-center justify-center mt-8 md:mt-0 ml-auto">
-        <img
-          src="../../assets/img/hero-1 (1).png"
-          alt="Developer GIF"
-          class="w-full h-auto object-contain float-animation"
-        />
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section reveal" data-section="about">
+    <div class="section-inner">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a <span class="highlight">Full Stack Developer</span> with 2+ years of experience building production-grade
+            web applications. Currently at <span class="highlight">Xtract.io</span>, I work on full-stack projects including
+            <span class="highlight">Demo Pulse</span> and the <span class="highlight">EQ360 ESG Analytics</span> platform.
+          </p>
+          <p>
+            My stack centers around <span class="highlight">Angular + TypeScript</span> on the frontend and
+            <span class="highlight">.NET Web API + C#</span> on the backend, with <span class="highlight">PostgreSQL</span>
+            and <span class="highlight">Neo4j</span> for data. I also automate workflows using Python and integrate
+            third-party APIs like Google Workspace.
+          </p>
+          <p>
+            I'm passionate about performance optimization, clean architecture, and delivering real business value through code.
+            Seeking a challenging <span class="highlight">Full Stack role</span> to grow further.
+          </p>
+          <div class="location-badge">
+            <span>📍</span> Chengalpattu, Tamil Nadu
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-num">2+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">12+</span>
+            <span class="stat-label">Technologies</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">4+</span>
+            <span class="stat-label">Projects Delivered</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">8.4</span>
+            <span class="stat-label">CGPA</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  
-  
-  <!-- Main Portfolio Content -->
-  <main class="pt-12 px-12 max-w-5xl bg-[#1d232a] mx-auto space-y-24 text-white">
-    <!-- About Me -->
-    <section id="about" class="space-y-4">
-      <h2 class="text-4xl font-bold border-b-4 border-[#3498db] inline-block pb-2 mb-4">
-        About Me
-      </h2>
-      <p class="text-white text-lg leading-relaxed">
-        I'm a passionate Full Stack Developer with experience in building scalable
-        web applications using modern technologies. I enjoy solving complex
-        problems and continuously learning new skills to improve my craft.
-      </p>
-    </section>
-  
-    <!-- Skills -->
-    <section id="skills" class="space-y-6">
-      <h2
-        class="text-4xl font-bold border-b-4 border-[#3498db] inline-block pb-2 mb-4"
-      >
-        Skills
-      </h2>
-      <div
-        class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center "
-      >
-        <div
-          class="p-4 border rounded-lg shadow hover:shadow-lg transition skill-card"
-        >
-          <h3 class="font-semibold mb-2">Frontend</h3>
-          <p>Angular, HTML, CSS</p>
-        </div>
-        <div
-          class="p-4 border rounded-lg shadow hover:shadow-lg transition skill-card"
-        >
-          <h3 class="font-semibold mb-2">Backend</h3>
-          <p>.NET Core, Python</p>
-        </div>
-        <div
-          class="p-4 border rounded-lg shadow hover:shadow-lg transition skill-card"
-        >
-          <h3 class="font-semibold mb-2">Databases</h3>
-          <p>MySQL, PostgreSQL, Neo4j</p>
-        </div>
-        <div
-          class="p-4 border rounded-lg shadow hover:shadow-lg transition skill-card"
-        >
-          <h3 class="font-semibold mb-2">Tools & DevOps</h3>
-          <p>Git, Azure</p>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section section-alt reveal" data-section="skills">
+    <div class="section-inner">
+      <h2 class="section-title">Skills & Tools</h2>
+      <div class="skills-grid">
+        <div *ngFor="let skill of skills" class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name">{{ skill.name }}</span>
+            <span class="skill-badge">{{ skill.category }}</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" [style.width.%]="skill.level">
+              <span class="skill-percent">{{ skill.level }}%</span>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  
-    <!-- Projects -->
-    <section id="projects" class="space-y-6">
-      <h2
-        class="text-4xl font-bold border-b-4 border-[#3498db] inline-block pb-2 mb-4"
-      >
-        Projects
-      </h2>
-      <div class="space-y-8">
-        <div
-          class="border p-6 rounded-lg shadow hover:shadow-lg transition"
-        >
-          <h3 class="text-2xl font-semibold mb-2">EQ360</h3>
-          <p class="mb-3 text-white">
-            It offers ESG Data and Analytics for 1,000 listed companies in India built with
-            Angular and Node.js.
-          </p>
-          
-          
+
+      <!-- Tools Row -->
+      <div class="tools-section">
+        <h3 class="tools-title">Tools &amp; Workflow</h3>
+        <div class="tools-grid">
+          <div *ngFor="let tool of tools" class="tool-chip">
+            <span>{{ tool.icon }}</span> {{ tool.name }}
+          </div>
         </div>
       </div>
-    </section>
-  
-    <!-- Experience -->
-    <section id="experience" class="space-y-6">
-      <h2
-        class="text-4xl font-bold border-b-4 border-[#3498db] inline-block pb-2 mb-4 text-white"
-      >
-        Experience
-      </h2>
-      <div class="space-y-6">
-        <div>
-          <h3 class="text-xl font-semibold">Juniour Software Engineer at Xtract.io</h3>
-          <p class="text-sm text-white italic mb-1">Apr 2024 - Present</p>
-          <ul class="list-disc list-inside text-white">
-            <li>
-              Developed and maintained multiple client-facing web applications
-              using React and Node.js.
-            </li>
-            <li>
-              Collaborated with cross-functional teams to design REST APIs and
-              improve system performance.
-            </li>
-            <li>
-              Implemented CI/CD pipelines and automated testing workflows.
-            </li>
-          </ul>
-        </div>
-  
-        <div>
-          <h3 class="text-xl font-semibold">Software Engineer Inter at Mobius Knowledge Services</h3>
-          <p class="text-sm text-white italic mb-1">Sep 2023 - Apr 2024</p>
-          <ul class="list-disc list-inside text-white">
-            <li>Assisted in frontend development using Angular and Bootstrap.</li>
-            <li>Worked on database schema design and wrote efficient queries.</li>
-            <li>Participated in code reviews and agile ceremonies.</li>
-          </ul>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section reveal" data-section="projects">
+    <div class="section-inner">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div *ngFor="let project of projects" class="project-card">
+          <div class="project-top" [ngClass]="'bg-gradient-' + project.color">
+            <span class="project-icon">{{ project.icon }}</span>
+            <span class="project-badge" [ngClass]="'badge-' + project.badge.toLowerCase()">
+              <span *ngIf="project.badge === 'Live'" class="pulse-dot"></span>
+              {{ project.badge }}
+            </span>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-subtitle">{{ project.subtitle }}</p>
+            <p class="project-desc">{{ project.description }}</p>
+            <div class="project-tags">
+              <span *ngFor="let tag of project.tech" class="tag">{{ tag }}</span>
+            </div>
+            <div class="project-footer" *ngIf="project.live">
+              <a [href]="project.live" target="_blank" rel="noopener" class="live-link">
+                <span class="live-dot"></span> View Live →
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  
-    <!-- Contact -->
-    <section id="contact" class="space-y-6">
-      <h2
-        class="text-4xl font-bold border-b-4 border-[#3498db] inline-block pb-2 mb-4 text-white"
-      >
-        Contact
-    </h2>
-      <ul class="space-y-2 text-white">
-        <li>
-          Email:
-          <a
-          href="mailto:lakshmikanthan.b.2001@gmail.com"
-          class="text-primary hover:underline"
-        >
-          lakshmikanthan.b.2001&#64;gmail.com
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="section section-alt reveal" data-section="experience">
+    <div class="section-inner">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div *ngFor="let exp of experience" class="timeline-item">
+          <div class="timeline-dot" [class.current]="exp.current"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <h3 class="exp-role">{{ exp.role }}</h3>
+                <p class="exp-company">{{ exp.company }}</p>
+              </div>
+              <span class="exp-period" [class.badge-current]="exp.current">{{ exp.period }}</span>
+            </div>
+            <div *ngFor="let proj of exp.projects" class="exp-project-block">
+              <p class="exp-project-name">
+                <span class="exp-proj-icon">▸</span> {{ proj.name }}
+              </p>
+              <ul class="exp-points">
+                <li *ngFor="let point of proj.points">{{ point }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" class="section reveal" data-section="education">
+    <div class="section-inner">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-body">
+          <h3 class="edu-degree">B.Tech – Information Technology</h3>
+          <p class="edu-college">Jeppiaar SRR Engineering College</p>
+          <div class="edu-meta">
+            <span class="edu-year">📅 2019 – 2023</span>
+            <span class="edu-cgpa">⭐ CGPA: 8.4 / 10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section section-alt reveal" data-section="contact">
+    <div class="section-inner">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-sub">I'm open to new opportunities. Let's connect!</p>
+      <div class="contact-grid">
+        <a href="mailto:lakshmikanthan.b.2001@gmail.com" class="contact-card">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <p class="contact-label">Email</p>
+            <p class="contact-value">lakshmikanthan.b.2001&#64;gmail.com</p>
+          </div>
         </a>
-        
-        </li>
-        <li>
-          Phone:
-          <a href="tel:+919025275948" class="text-white hover:underline"
-            >+91 9025275948</a
-          >
-        </li>
-        <li>
-          LinkedIn:
-          <a
-            href="https://www.linkedin.com/in/lakshmikanthan-b-b3820023a/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-white hover:underline"
-            >linkedin.com/in/Lakshmikanthan B</a
-          >
-        </li>
-        <li>
-          GitHub:
-          <a
-            href="https://github.com/Lakshmikanthanoffl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-white hover:underline"
-            >github.com/Lakshmikanthanoffl</a
-          >
-        </li>
-      </ul>
-    </section>
-  </main>
-<!-- Footer -->
-<footer class="bg-gray-800 text-white py-4 w-full mt-12">
-   
+        <a href="tel:+919025275948" class="contact-card">
+          <div class="contact-icon">📱</div>
+          <div>
+            <p class="contact-label">Phone</p>
+            <p class="contact-value">+91 90252 75948</p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/lakshmikanthan-b-b3820023a/" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-icon">💼</div>
+          <div>
+            <p class="contact-label">LinkedIn</p>
+            <p class="contact-value">lakshmikanthan-b</p>
+          </div>
+        </a>
+        <a href="https://github.com/Lakshmikanthanoffl" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-icon">🐙</div>
+          <div>
+            <p class="contact-label">GitHub</p>
+            <p class="contact-value">Lakshmikanthanoffl</p>
+          </div>
+        </a>
+        <div class="contact-card no-link">
+          <div class="contact-icon">📍</div>
+          <div>
+            <p class="contact-label">Location</p>
+            <p class="contact-value">Chengalpattu, Tamil Nadu</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Designed &amp; Built by <span class="highlight">Lakshmikanthan B</span> &copy; {{ currentYear }}</p>
+    <p class="footer-sub">Junior Software Engineer · Angular · .NET Web API · PostgreSQL · Neo4j</p>
   </footer>
-  
-  
+
 </div>
