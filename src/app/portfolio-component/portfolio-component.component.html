@@ -146,7 +146,7 @@
       <h2 class="section-title">Projects</h2>
       <div class="projects-grid">
         <div *ngFor="let project of projects" class="project-card">
-          <div class="project-top" [ngClass]="'bg-gradient-' + project.color">
+          <div class="project-top" [ngClass]="project.color">
             <span class="project-icon">{{ project.icon }}</span>
             <span class="project-badge" [ngClass]="'badge-' + project.badge.toLowerCase()">
               <span *ngIf="project.badge === 'Live'" class="pulse-dot"></span>

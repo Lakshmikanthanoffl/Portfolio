@@ -470,36 +470,41 @@
   align-items: center;
   justify-content: space-between;
 }
-.bg-gradient-from-purple-500 { background: linear-gradient(135deg, #a855f7, #ec4899); }
-.bg-gradient-from-green-500  { background: linear-gradient(135deg, #22c55e, #14b8a6); }
-.bg-gradient-from-orange-500 { background: linear-gradient(135deg, #f97316, #ef4444); }
-.bg-gradient-from-blue-500   { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
+.grad-purple { background: linear-gradient(135deg, #a855f7, #ec4899); }
+.grad-green  { background: linear-gradient(135deg, #22c55e, #14b8a6); }
+.grad-orange { background: linear-gradient(135deg, #f97316, #ef4444); }
+.grad-blue   { background: linear-gradient(135deg, #3b82f6, #06b6d4); }
 .project-icon { font-size: 2.5rem; }
 .project-badge {
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 20px;
   display: flex;
   align-items: center;
   gap: 5px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 .badge-live {
-  background: rgba(63,185,80,0.2);
+  border-color: #3fb950;
   color: #3fb950;
-  border: 1px solid rgba(63,185,80,0.4);
+  background: rgba(0,0,0,0.6);
 }
 .badge-internal {
-  background: rgba(167,113,247,0.2);
-  color: #a371f7;
-  border: 1px solid rgba(167,113,247,0.4);
+  border-color: #d2a8ff;
+  color: #d2a8ff;
+  background: rgba(0,0,0,0.6);
 }
 .badge-production {
-  background: rgba(88,166,255,0.2);
-  color: #58a6ff;
-  border: 1px solid rgba(88,166,255,0.4);
+  border-color: #79c0ff;
+  color: #79c0ff;
+  background: rgba(0,0,0,0.6);
 }
 
 /* Pulse dot for Live badge */
